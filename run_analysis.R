@@ -71,7 +71,7 @@ meansAndDeviations <-mergedData[c(names(mergedData)[grepl("[Mm]ean|[Ss]td",names
 
 ##Take average of std deviations and means for each activity each individual subject performed
 ##Done by melting subject & activities columns and then using dcast to take the means
-meltedMeans <- melt(mergedData, id = c("subject", "activities"))
+meltedMeans <- melt(meansAndDeviations, id = c("subject", "activities"))
 activityMeans <- dcast(meltedMeans, subject + activities ~ variable, mean)
 
 ##Clean up R environment a bit by removing intermediate variables, leaves data 
